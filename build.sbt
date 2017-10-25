@@ -12,7 +12,6 @@ libraryDependencies ++= Seq(
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 homepage := Some(url("http://github.com/a8m/pb-scala"))
 
-publishMavenStyle := true
 publishTo := {
     val corporateRepo = "http://toucan.simplesys.lan/"
     if (isSnapshot.value)
@@ -22,4 +21,4 @@ publishTo := {
 }
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 publishArtifact in Test := false
-pomIncludeRepository := { _ => false }
+
