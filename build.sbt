@@ -1,4 +1,5 @@
 name := "pb"
+organization := "com.ivc-inform"
 version := "0.3-SNAPSHOT"
 scalaVersion := "2.12.4"
 
