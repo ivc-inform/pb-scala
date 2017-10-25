@@ -22,7 +22,7 @@ object ProgressBar {
   private val Format = "[=>-]"
 
   def kbFmt(n: Double): String = {
-    var kb = 1024
+    val kb = 1024
     n match {
       case x if x >= Math.pow(kb, 4) => "%.2f TB".format(x / Math.pow(kb, 4))
       case x if x >= Math.pow(kb, 3) => "%.2f GB".format(x / Math.pow(kb, 3))
@@ -36,10 +36,10 @@ object ProgressBar {
 /** By calling new ProgressBar with Int as a total, you'll
  *  create a new ProgressBar with default configuration.
  */
-class ProgressBar(_total: Int) extends Output {
+class ProgressBar(_total: Int, subject: Option[String] = None) extends Output {
   val total = _total
   var current = 0
-  private var startTime = DateTime.now
+  private val startTime = DateTime.now
   private var units = Units.Default
   private var barStart, barCurrent, barCurrentN, barRemain, barEnd = ""
   var isFinish = false
@@ -85,7 +85,7 @@ class ProgressBar(_total: Int) extends Output {
     var prefix, base, suffix = ""
     // percent box
     if (showPercent) {
-      var percent = current.toFloat / (total.toFloat / 100)
+      val percent = current.toFloat / (total.toFloat / 100)
       suffix += " %.2f %% ".format(percent)
     }
     // speed box
@@ -110,7 +110,7 @@ class ProgressBar(_total: Int) extends Output {
     // counter box
     if (showCounter) {
       prefix += (units match {
-        case Default => "%d / %d ".format(current, total)
+        case Default => s"${if(subject.isDefined) s"Run: ${subject.get} " else ""}%d / %d ".format(current, total)
         case Bytes => "%s / %s ".format(ProgressBar.kbFmt(current), ProgressBar.kbFmt(total))
       })
     }

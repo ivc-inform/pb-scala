@@ -5,8 +5,8 @@ scalaVersion := "2.12.4"
 
 libraryDependencies ++= Seq(
     "com.github.nscala-time" %% "nscala-time" % "2.16.0",
-    "org.scalatest" %% "scalatest" % "3.0.4" % Test,
-    "jline" % "jline" % "2.14.5"
+    "jline" % "jline" % "2.14.5",
+    "org.scalatest" %% "scalatest" % "3.0.4" % Test
 )
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
