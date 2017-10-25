@@ -12,7 +12,7 @@ class ProgressBarTest extends WordSpec with Matchers {
   "A ProgressBar" when {
     "Call add()" should {
       "increment `current` in n" in {
-        var pb = new ProgressBar(100) with MockOutput
+        val pb = new ProgressBar(100) with MockOutput
         pb.add(10)
         pb.current should be (10)
         pb.messages.last should (
@@ -22,14 +22,14 @@ class ProgressBarTest extends WordSpec with Matchers {
     }
     "Using += operator" should {
       "increment `current` in n" in {
-        var pb = new ProgressBar(100) with MockOutput
+        var pb: ProgressBar with MockOutput = new ProgressBar(100) with MockOutput
         pb+= 10
         pb.current should be (10)
       }
     }
     "Call finish" should {
       "set `current` to `total`" in {
-        var pb = new ProgressBar(1) with MockOutput
+        val pb = new ProgressBar(1) with MockOutput
         pb.finish()
         pb.current should be (pb.total)
         pb.isFinish should be (true)
